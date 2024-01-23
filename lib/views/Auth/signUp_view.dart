@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:mr_ambarisha_frontend_new/utils/app_colors.dart';
+import 'package:mr_ambarisha_frontend_new/utils/constants.dart';
 import 'package:mr_ambarisha_frontend_new/view_model/basket_controller.dart';
 import 'package:mr_ambarisha_frontend_new/views/Auth/otp_verification.dart';
 
@@ -217,11 +218,21 @@ class SignupForm extends GetView<BasketController> {
                   validator: (value) {
                     if (value?.isEmpty ?? false) {
                       return 'This field cannot be empty';
+                    } else if (value?.length != 10) {
+                      return 'Enter valid number';
                     }
                     return null;
                   },
                   decoration: InputDecoration(
                       hintText: "Enter Mobile Number",
+                      errorBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.red),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      errorStyle: const TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
                       suffixIcon: const Icon(Icons.close),
                       prefixIcon: Container(
                         width: 55.w,
@@ -252,27 +263,30 @@ class SignupForm extends GetView<BasketController> {
           ),
           kbox10(),
           GetBuilder<BasketController>(
-            builder: (controller) => InkWell(
-              onTap: () {
-                controller.signUpButton();
-              },
-              child: Container(
-                width: 200.w,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: const Color(0xff2ED297)),
-                child: const Center(
-                  child: Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: Text(
-                      "Next",
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w700),
+            builder: (controller) => controller.loading
+                ? Constants.showCircularProgress()
+                : InkWell(
+                    onTap: () {
+                      controller.signUpButton();
+                    },
+                    child: Container(
+                      width: 200.w,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: const Color(0xff2ED297)),
+                      child: const Center(
+                        child: Padding(
+                          padding: EdgeInsets.all(15.0),
+                          child: Text(
+                            "Next",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-            ),
           ),
         ],
       ),

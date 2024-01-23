@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mr_ambarisha_frontend_new/utils/constant_box.dart';
+import 'package:mr_ambarisha_frontend_new/view_model/basket_controller.dart';
 import 'package:mr_ambarisha_frontend_new/views/Holidays/holiday.dart';
 import 'package:mr_ambarisha_frontend_new/views/Notification/allnoti.dart';
 import 'package:mr_ambarisha_frontend_new/views/Recycle/Recycle.dart';
@@ -29,6 +30,7 @@ class MenuScreenView extends StatefulWidget {
 }
 
 class _MenuScreenViewState extends State<MenuScreenView> {
+  BasketController controller = Get.put(BasketController());
   bool _switchValue = true;
 
   @override
@@ -310,21 +312,24 @@ class _MenuScreenViewState extends State<MenuScreenView> {
                       },
                     ),
                     kbox10(),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.logout,
-                          color: Color(0xffD71E40),
-                        ),
-                        kboxw10(),
-                        const Text(
-                          "Log out",
-                          style: TextStyle(
-                              color: Color(0xffD71E40),
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600),
-                        ),
-                      ],
+                    InkWell(
+                      onTap: () => controller.logOut(),
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.logout,
+                            color: Color(0xffD71E40),
+                          ),
+                          kboxw10(),
+                          const Text(
+                            "Log out",
+                            style: TextStyle(
+                                color: Color(0xffD71E40),
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),

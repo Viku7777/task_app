@@ -68,4 +68,13 @@ class Constants {
       ),
     );
   }
+
+  static showCircularProgress() {
+    return const Center(
+      child: CircularProgressIndicator(
+        strokeWidth: 4,
+        backgroundColor: Colors.orange,
+      ),
+    );
+  }
 }

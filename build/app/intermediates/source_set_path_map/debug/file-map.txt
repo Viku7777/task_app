@@ -13,4 +13,5 @@ com.example.mr_ambarisha_frontend_new.app-rs-11 /Users/habeebu/Documents/Flutter
 com.example.mr_ambarisha_frontend_new.app-mergeDebugResources-12 /Users/habeebu/Documents/Flutter_projects/task_app/build/app/intermediates/incremental/debug/mergeDebugResources/merged.dir
 com.example.mr_ambarisha_frontend_new.app-mergeDebugResources-13 /Users/habeebu/Documents/Flutter_projects/task_app/build/app/intermediates/incremental/debug/mergeDebugResources/stripped.dir
 com.example.mr_ambarisha_frontend_new.app-merged_res-14 /Users/habeebu/Documents/Flutter_projects/task_app/build/app/intermediates/merged_res/debug
-com.example.mr_ambarisha_frontend_new.app-packaged_res-15 /Users/habeebu/Documents/Flutter_projects/task_app/build/smart_auth/intermediates/packaged_res/debug
+com.example.mr_ambarisha_frontend_new.app-packaged_res-15 /Users/habeebu/Documents/Flutter_projects/task_app/build/path_provider_android/intermediates/packaged_res/debug
+com.example.mr_ambarisha_frontend_new.app-packaged_res-16 /Users/habeebu/Documents/Flutter_projects/task_app/build/smart_auth/intermediates/packaged_res/debug

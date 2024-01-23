@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:mr_ambarisha_frontend_new/utils/constant_box.dart';
-import 'package:mr_ambarisha_frontend_new/views/choose_city.dart';
+import 'package:mr_ambarisha_frontend_new/utils/constants.dart';
+import 'package:mr_ambarisha_frontend_new/view_model/basket_controller.dart';
 import 'package:pinput/pinput.dart';
 
 class OtpVerifictionView extends StatefulWidget {
@@ -13,13 +14,13 @@ class OtpVerifictionView extends StatefulWidget {
 }
 
 class _OtpVerifictionViewState extends State<OtpVerifictionView> {
-  final pinController = TextEditingController();
+  BasketController controller = Get.put(BasketController());
   final focusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
-    pinController.dispose();
+    controller.pinController.dispose();
     focusNode.dispose();
     super.dispose();
   }
@@ -117,7 +118,7 @@ class _OtpVerifictionViewState extends State<OtpVerifictionView> {
                           child: Pinput(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
-                            controller: pinController,
+                            controller: controller.pinController,
                             focusNode: focusNode,
                             androidSmsAutofillMethod:
                                 AndroidSmsAutofillMethod.smsUserConsentApi,
@@ -199,26 +200,31 @@ class _OtpVerifictionViewState extends State<OtpVerifictionView> {
                   ),
                 ),
                 kbox20(),
-                InkWell(
-                  onTap: () {
-                    Get.to(const ChooseCityView());
-                  },
-                  child: Container(
-                    width: 270.w,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: const Color(0xff2ED297)),
-                    child: const Center(
-                      child: Padding(
-                        padding: EdgeInsets.all(15.0),
-                        child: Text(
-                          "Confirm",
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.w700),
+                GetBuilder<BasketController>(
+                  builder: (controller) => controller.loading
+                      ? Constants.showCircularProgress()
+                      : InkWell(
+                          onTap: () {
+                            controller.registerOtpButton();
+                          },
+                          child: Container(
+                            width: 270.w,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: const Color(0xff2ED297)),
+                            child: const Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(15.0),
+                                child: Text(
+                                  "Confirm",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
                 ),
               ],
             ),

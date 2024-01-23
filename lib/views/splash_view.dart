@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:mr_ambarisha_frontend_new/utils/app_colors.dart';
 import 'package:mr_ambarisha_frontend_new/utils/constant_box.dart';
+import 'package:mr_ambarisha_frontend_new/views/choose_city.dart';
 import 'package:mr_ambarisha_frontend_new/views/onboarding/onboarding_view.dart';
 
 class SplashView extends StatefulWidget {
@@ -14,10 +16,16 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
+  final box = GetStorage();
   @override
   void initState() {
-    Timer(Duration(seconds: 2), () {
-      Get.to(IntroScreen());
+    Timer(const Duration(seconds: 2), () async {
+      String? token = box.read('token');
+      if (token?.isNotEmpty ?? false) {
+        Get.offAll(const ChooseCityView());
+      } else {
+        Get.to(IntroScreen());
+      }
     });
     super.initState();
   }
@@ -97,9 +105,9 @@ class _SplashViewState extends State<SplashView> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(25.0),
-              child: const Text(
+            const Padding(
+              padding: EdgeInsets.all(25.0),
+              child: Text(
                 "By clicking on “Continue” you are agreeing to our terms of use ",
                 style: TextStyle(
                   color: Colors.white,
