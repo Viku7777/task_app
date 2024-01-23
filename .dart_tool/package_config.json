@@ -104,6 +104,18 @@
       "languageVersion": "2.15"
     },
     {
+      "name": "http",
+      "rootUri": "file:///Users/habeebu/.pub-cache/hosted/pub.dev/http-0.13.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "http_parser",
+      "rootUri": "file:///Users/habeebu/.pub-cache/hosted/pub.dev/http_parser-4.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "intl",
       "rootUri": "file:///Users/habeebu/.pub-cache/hosted/pub.dev/intl-0.18.1",
       "packageUri": "lib/",
@@ -254,6 +266,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "typed_data",
+      "rootUri": "file:///Users/habeebu/.pub-cache/hosted/pub.dev/typed_data-1.3.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "universal_platform",
       "rootUri": "file:///Users/habeebu/.pub-cache/hosted/pub.dev/universal_platform-1.0.0+1",
       "packageUri": "lib/",
@@ -272,7 +290,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2024-01-22T17:17:23.921668Z",
+  "generated": "2024-01-23T01:32:50.699944Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }
