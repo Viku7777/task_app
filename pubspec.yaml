@@ -32,8 +32,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_image_slideshow: ^0.1.6
-  flutter_screenutil: ^5.9.0
-  get: ^4.6.6
+  flutter_screenutil:
+  get:
   lorem_gen: ^2.0.1
   pinput: ^2.3.0
   syncfusion_flutter_calendar: ^23.1.36

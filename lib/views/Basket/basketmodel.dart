@@ -4,7 +4,7 @@ class ProductTile extends StatelessWidget {
   final ProductData product;
 
   // Constructor
-  ProductTile({required this.product});
+  const ProductTile({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +24,8 @@ class ProductTile extends StatelessWidget {
             '1kg,6',
             style: TextStyle(color: Colors.red),
           ),
-          const Row(
-            children: [
+          Row(
+            children: const [
               Text(
                 'MRP: ₹60 ',
                 style: TextStyle(
@@ -65,7 +65,6 @@ class ProductTile extends StatelessWidget {
     );
   }
 }
-
 
 class ProductData {
   final String imageUrl;

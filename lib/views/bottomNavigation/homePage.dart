@@ -58,9 +58,9 @@ class _HomePageviewState extends State<HomePageview> {
                     },
                     child: Image.asset("assets/home_pro_icon.png")),
               ),
-              title: const Column(
+              title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: const [
                   Text(
                     "Good morning",
                     style: TextStyle(fontSize: 13, color: Colors.grey),
@@ -77,14 +77,14 @@ class _HomePageviewState extends State<HomePageview> {
                       color: const Color(0xff1A3848),
                       borderRadius: BorderRadius.circular(20)),
                   child: Padding(
-                    padding: EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.location_on,
                           color: Colors.red,
                         ),
-                        Text("My Flat",
+                        const Text("My Flat",
                             style:
                                 TextStyle(fontSize: 17, color: Colors.white)),
                         IconButton(
@@ -93,9 +93,10 @@ class _HomePageviewState extends State<HomePageview> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => AddAddressView()));
+                                    builder: (context) =>
+                                        const AddAddressView()));
                           },
-                          icon: Icon(Icons.keyboard_arrow_down_outlined),
+                          icon: const Icon(Icons.keyboard_arrow_down_outlined),
                         ),
                       ],
                     ),
@@ -135,9 +136,9 @@ class _HomePageviewState extends State<HomePageview> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    SubscriptionCelenderView()));
+                                    const SubscriptionCelenderView()));
                       },
-                      child: Container(
+                      child: SizedBox(
                           height: 30,
                           child: Image.asset("assets/celender.png")),
                     )
@@ -157,9 +158,9 @@ class _HomePageviewState extends State<HomePageview> {
                 children: [
                   const MainBanner(),
                   kbox10(),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text("Explore Categories",
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
@@ -173,7 +174,7 @@ class _HomePageviewState extends State<HomePageview> {
                     ],
                   ),
                   kbox10(),
-                  Container(height: height * 0.4, child: ExploreCategoryView()),
+                  SizedBox(height: height * 0.4, child: ExploreCategoryView()),
                   kbox10(),
                   Container(
                     color: const Color(0xffFFC542),
@@ -261,9 +262,9 @@ class _HomePageviewState extends State<HomePageview> {
                         itemCount: 3),
                   ),
                   kbox10(),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text("Deal",
                           style: TextStyle(
                               fontWeight: FontWeight.w900,
@@ -277,14 +278,14 @@ class _HomePageviewState extends State<HomePageview> {
                     ],
                   ),
                   kbox10(),
-                  Container(
+                  SizedBox(
                     height: height * 0.37,
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Categories()));
+                                builder: (context) => const Categories()));
                       },
                       child: ListView.separated(
                           scrollDirection: Axis.horizontal,
@@ -297,9 +298,9 @@ class _HomePageviewState extends State<HomePageview> {
                     ),
                   ),
                   kbox10(),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text("Popular Deals",
                           style: TextStyle(
                               fontWeight: FontWeight.w900,
@@ -331,9 +332,9 @@ class _HomePageviewState extends State<HomePageview> {
                     ),
                   ),
                   kbox10(),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text("Order Again",
                           style: TextStyle(
                               fontWeight: FontWeight.w900,
@@ -352,7 +353,7 @@ class _HomePageviewState extends State<HomePageview> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Categories()));
+                              builder: (context) => const Categories()));
                     },
                     child: Container(
                       height: height * 0.2,
@@ -378,9 +379,9 @@ class _HomePageviewState extends State<HomePageview> {
                   kbox10(),
                   Image.asset("assets/Indicator.png"),
                   kbox10(),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text("Related product",
                           style: TextStyle(
                               fontWeight: FontWeight.w900,
@@ -405,7 +406,8 @@ class _HomePageviewState extends State<HomePageview> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Categories()));
+                                      builder: (context) =>
+                                          const Categories()));
                             },
                             child: Image.asset("assets/related_product.png")),
                         Image.asset("assets/related_product.png"),
@@ -414,9 +416,9 @@ class _HomePageviewState extends State<HomePageview> {
                     ),
                   ),
                   kbox10(),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text("Everty day Essentials",
                           style: TextStyle(
                               fontWeight: FontWeight.w900,
@@ -454,9 +456,9 @@ class _HomePageviewState extends State<HomePageview> {
                     ),
                   ),
                   kbox10(),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text("day Essentials",
                           style: TextStyle(
                               fontWeight: FontWeight.w900,
@@ -474,7 +476,7 @@ class _HomePageviewState extends State<HomePageview> {
                     onTap: () {
                       showModalBottomSheet(
                         context: context,
-                        shape: RoundedRectangleBorder(
+                        shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.vertical(
                                 top: Radius.circular(20))),
                         builder: (BuildContext context) {
@@ -574,9 +576,9 @@ class _HomePageviewState extends State<HomePageview> {
                     ),
                   ),
                   kbox10(),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text("Everyday Essentials",
                           style: TextStyle(
                               fontWeight: FontWeight.w900,
@@ -592,9 +594,9 @@ class _HomePageviewState extends State<HomePageview> {
                   kbox10(),
                   everday2(height),
                   kbox20(),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text("On Demand Products",
                           style: TextStyle(
                               fontWeight: FontWeight.w900,
@@ -613,7 +615,7 @@ class _HomePageviewState extends State<HomePageview> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Categories()));
+                              builder: (context) => const Categories()));
                     },
                     child: Container(
                       height: height * 0.35,
@@ -621,7 +623,7 @@ class _HomePageviewState extends State<HomePageview> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
+                          SizedBox(
                             height: height * 0.35,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
@@ -719,9 +721,9 @@ class _HomePageviewState extends State<HomePageview> {
                     ),
                   ),
                   kbox10(),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text("Today Offers",
                           style: TextStyle(
                               fontWeight: FontWeight.w900,
@@ -741,7 +743,7 @@ class _HomePageviewState extends State<HomePageview> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
+                        SizedBox(
                           height: height * 0.32,
                           child: ListView.builder(
                             itemCount: 5,
@@ -756,9 +758,9 @@ class _HomePageviewState extends State<HomePageview> {
                     ),
                   ),
                   kbox20(),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text("Week End Sale",
                           style: TextStyle(
                               fontWeight: FontWeight.w900,
@@ -778,7 +780,7 @@ class _HomePageviewState extends State<HomePageview> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
+                        SizedBox(
                           height: height * 0.43,
                           child: ListView.builder(
                             scrollDirection: Axis.horizontal,
@@ -889,10 +891,10 @@ class _HomePageviewState extends State<HomePageview> {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Container(
+                  SizedBox(
                     height: height * 0.30,
                     child: Column(
                       children: [
@@ -959,8 +961,8 @@ class _HomePageviewState extends State<HomePageview> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    const Column(
-                      children: [
+                    Column(
+                      children: const [
                         Text(
                           "500 Gm",
                           style: TextStyle(
@@ -974,8 +976,7 @@ class _HomePageviewState extends State<HomePageview> {
                         ),
                       ],
                     ),
-                    Container(
-                        width: 100, child: Image.asset("assets/bnana.png"))
+                    SizedBox(width: 100, child: Image.asset("assets/bnana.png"))
                   ],
                 ),
                 kbox10(),
@@ -991,9 +992,9 @@ class _HomePageviewState extends State<HomePageview> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Column(
+                    Column(
                       children: [
-                        Text(
+                        const Text(
                           "(450 to 500grm)",
                           style: TextStyle(
                               color: Colors.black,
@@ -1001,7 +1002,7 @@ class _HomePageviewState extends State<HomePageview> {
                               fontSize: 12),
                         ),
                         Row(
-                          children: [
+                          children: const [
                             Text(
                               "₹170.00",
                               style: TextStyle(
@@ -1016,7 +1017,7 @@ class _HomePageviewState extends State<HomePageview> {
                         ),
                       ],
                     ),
-                    Container(width: 100, child: Image.asset("assets/plus.png"))
+                    SizedBox(width: 100, child: Image.asset("assets/plus.png"))
                   ],
                 ),
               ]),
@@ -1136,7 +1137,7 @@ class _HomePageviewState extends State<HomePageview> {
   }
 
   everyDayaessential(img, h) {
-    return Container(
+    return SizedBox(
         height: h - 50,
         child: Container(
           decoration: const BoxDecoration(
@@ -1396,20 +1397,20 @@ class _HomePageviewState extends State<HomePageview> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Column(
+                      Column(
                         children: [
-                          Text("Available(in stock)",
+                          const Text("Available(in stock)",
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: Color(0xffA9A9A9),
                                   fontSize: 16)),
-                          Text("Fresh organic apricot",
+                          const Text("Fresh organic apricot",
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: Colors.black,
                                   fontSize: 18)),
                           Row(
-                            children: [
+                            children: const [
                               Text("₹170.00  ",
                                   style: TextStyle(
                                       decoration: TextDecoration.lineThrough,
@@ -1424,7 +1425,7 @@ class _HomePageviewState extends State<HomePageview> {
                                       fontSize: 13)),
                             ],
                           ),
-                          Text("(900 to 1100grm)",
+                          const Text("(900 to 1100grm)",
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: Colors.black,
@@ -1460,17 +1461,17 @@ class _HomePageviewState extends State<HomePageview> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios_new_outlined,
                 color: Colors.black,
               ),
             ),
             backgroundColor: Colors.white,
-            title: Text(
+            title: const Text(
               'Popular Deals',
               style: TextStyle(color: Colors.black),
             ),
-            actions: [
+            actions: const [
               Icon(
                 Icons.question_mark_sharp,
                 color: Colors.black,
@@ -1484,8 +1485,8 @@ class _HomePageviewState extends State<HomePageview> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
-                  margin: EdgeInsets.only(left: 20, top: 20),
-                  child: Text(
+                  margin: const EdgeInsets.only(left: 20, top: 20),
+                  child: const Text(
                     'Select Your Plan Type',
                     style: TextStyle(
                         color: Colors.black,
@@ -1495,7 +1496,7 @@ class _HomePageviewState extends State<HomePageview> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 20),
+                margin: const EdgeInsets.only(top: 20),
                 child: Center(
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal, // Horizontal scrolling
@@ -1506,23 +1507,24 @@ class _HomePageviewState extends State<HomePageview> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => daily()));
+                                    builder: (context) => const daily()));
                           },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50),
                             ),
-                            primary: Color(0xFF90ABEF), // Button color
+                            backgroundColor:
+                                const Color(0xFF90ABEF), // Button color
                             elevation: 5.0, // Elevation
                           ),
-                          child: Text(
+                          child: const Text(
                             'Daily',
                             style: TextStyle(
                               color: Colors.white, // Text color
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         ElevatedButton(
@@ -1531,23 +1533,24 @@ class _HomePageviewState extends State<HomePageview> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        weekly())); // Add your button click logic here
+                                        const weekly())); // Add your button click logic here
                           },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50),
                             ),
-                            primary: Color(0xFF90ABEF), // Button color
+                            backgroundColor:
+                                const Color(0xFF90ABEF), // Button color
                             elevation: 5.0, // Elevation
                           ),
-                          child: Text(
+                          child: const Text(
                             'Weekly',
                             style: TextStyle(
                               color: Colors.white, // Text color
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         ElevatedButton(
@@ -1555,23 +1558,24 @@ class _HomePageviewState extends State<HomePageview> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => weekend()));
+                                    builder: (context) => const weekend()));
                           },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50),
                             ),
-                            primary: Color(0xFF90ABEF), // Button color
+                            backgroundColor:
+                                const Color(0xFF90ABEF), // Button color
                             elevation: 5.0, // Elevation
                           ),
-                          child: Text(
+                          child: const Text(
                             'Weekends',
                             style: TextStyle(
                               color: Colors.white, // Text color
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         ElevatedButton(
@@ -1580,16 +1584,17 @@ class _HomePageviewState extends State<HomePageview> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        alternativeday())); // Add your button click logic here
+                                        const alternativeday())); // Add your button click logic here
                           },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50),
                             ),
-                            primary: Color(0xFF90ABEF), // Button color
+                            backgroundColor:
+                                const Color(0xFF90ABEF), // Button color
                             elevation: 5.0, // Elevation
                           ),
-                          child: Text(
+                          child: const Text(
                             'Alternative days',
                             style: TextStyle(
                               color: Colors.white, // Text color

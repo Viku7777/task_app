@@ -4,8 +4,8 @@
 4
 5    <uses-sdk
 6        android:minSdkVersion="16"
-6-->/Users/vixh/.pub-cache/hosted/pub.dev/smart_auth-1.1.1/android/src/main/AndroidManifest.xml
+6-->/Users/habeebu/.pub-cache/hosted/pub.dev/smart_auth-1.1.1/android/src/main/AndroidManifest.xml
 7        android:targetSdkVersion="16" />
-7-->/Users/vixh/.pub-cache/hosted/pub.dev/smart_auth-1.1.1/android/src/main/AndroidManifest.xml
+7-->/Users/habeebu/.pub-cache/hosted/pub.dev/smart_auth-1.1.1/android/src/main/AndroidManifest.xml
 8
 9</manifest>

@@ -24,8 +24,8 @@ class TransactionView extends StatelessWidget {
             )),
         elevation: 0,
         backgroundColor: Colors.white,
-        title: const Row(
-          children: [
+        title: Row(
+          children: const [
             Text(
               "Total Balance ",
               style: TextStyle(color: AppColors.darkblue, fontSize: 20),
@@ -58,15 +58,17 @@ class TransactionView extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                     // Get.to(const AddMoneyView());
+                      // Get.to(const AddMoneyView());
                     },
                     child: Container(
                       height: 40.h,
                       width: 120.w,
                       decoration: BoxDecoration(
-                          color: Color(0xff86C649),
+                          color: const Color(0xff86C649),
                           borderRadius: BorderRadius.circular(8),
-                          border: Border.all( color: Color(0xff86C649),)),
+                          border: Border.all(
+                            color: const Color(0xff86C649),
+                          )),
                       child: const Center(
                           child: Text(
                         "Add Money",
@@ -82,9 +84,11 @@ class TransactionView extends StatelessWidget {
                       height: 40.h,
                       width: 120.w,
                       decoration: BoxDecoration(
-                          color: Color(0xff86C649),
+                          color: const Color(0xff86C649),
                           borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Color(0xff86C649),)),
+                          border: Border.all(
+                            color: const Color(0xff86C649),
+                          )),
                       child: const Center(
                           child: Text(
                         "History",
@@ -107,7 +111,7 @@ class TransactionView extends StatelessWidget {
                 ),
               ),
               kbox10(),
-              Container(
+              SizedBox(
                 height: Get.height - 200,
                 child: ListView.separated(
                     scrollDirection: Axis.vertical,

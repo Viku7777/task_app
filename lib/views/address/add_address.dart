@@ -76,9 +76,9 @@ class AddAddressView extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Image.asset("assets/send.png"),
-                            const Column(
+                            Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
+                              children: const [
                                 Text(
                                   "Aprtament Name(list)",
                                   style: TextStyle(
@@ -324,7 +324,7 @@ class AddAddressView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            width: MediaQuery.of(context).size.width/3,
+                            width: MediaQuery.of(context).size.width / 3,
                             height: MediaQuery.of(context).size.height * 0.14,
                             decoration: BoxDecoration(
                                 color: const Color(0xffF1F1F1),
@@ -354,8 +354,11 @@ class AddAddressView extends StatelessWidget {
                               ),
                             ),
                           ),
-                         SizedBox(width: 5,),
-                          Container(width: MediaQuery.of(context).size.width/3,
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width / 3,
                             height: MediaQuery.of(context).size.height * 0.14,
                             decoration: BoxDecoration(
                                 color: const Color(0xffF1F1F1),
@@ -391,8 +394,11 @@ class AddAddressView extends StatelessWidget {
                               ),
                             ),
                           ),
-                           SizedBox(width: 5,),
-                          Container(width: MediaQuery.of(context).size.width/2.5,
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width / 2.5,
                             height: MediaQuery.of(context).size.height * 0.14,
                             decoration: BoxDecoration(
                                 color: const Color(0xffF1F1F1),

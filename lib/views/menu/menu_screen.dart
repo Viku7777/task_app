@@ -45,9 +45,9 @@ class _MenuScreenViewState extends State<MenuScreenView> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: const [
                       Text(
                         "0.0",
                         style: TextStyle(
@@ -81,9 +81,9 @@ class _MenuScreenViewState extends State<MenuScreenView> {
                 children: [
                   Image.asset("assets/eary_mo.png"),
                   kboxw10(),
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: const [
                       Text(
                         "Ambi",
                         style: TextStyle(
@@ -131,9 +131,9 @@ class _MenuScreenViewState extends State<MenuScreenView> {
                     color: Colors.black,
                   ),
                   kboxw10(),
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: const [
                       Text(
                         "Reminder to  order",
                         style: TextStyle(
@@ -209,7 +209,7 @@ class _MenuScreenViewState extends State<MenuScreenView> {
                     InkWell(
                       child: kcard(Icons.shopping_cart, "Subscription"),
                       onTap: () {
-                        Get.to(SubscriptionCelenderView());
+                        Get.to(const SubscriptionCelenderView());
                       },
                     ),
                     kbox5(),
@@ -219,7 +219,7 @@ class _MenuScreenViewState extends State<MenuScreenView> {
                         showModalBottomSheet(
                           context: context,
                           builder: (BuildContext context) {
-                            return CustomBottomSheet();
+                            return const CustomBottomSheet();
                           },
                         );
                       },
@@ -231,15 +231,19 @@ class _MenuScreenViewState extends State<MenuScreenView> {
                       child:
                           kcard(Icons.pivot_table_chart, "Reward Point(Coins)"),
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Rewards()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Rewards()));
                       },
                     ),
                     kbox5(),
                     InkWell(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Recycle()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Recycle()));
                       },
                       child: kcard(Icons.playlist_add_check_circle,
                           " Recycling Packing Metrial"),
@@ -247,8 +251,10 @@ class _MenuScreenViewState extends State<MenuScreenView> {
                     kbox5(),
                     InkWell(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Invite()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Invite()));
                       },
                       child: kcard(Icons.share, " Refer & Earn"),
                     ),
@@ -270,7 +276,10 @@ class _MenuScreenViewState extends State<MenuScreenView> {
                     ),
                     kbox5(),
                     InkWell(
-                      child: kcard1(Icons.money,"Post paid Plan",),
+                      child: kcard1(
+                        Icons.money,
+                        "Post paid Plan",
+                      ),
                       onTap: () {
                         // Get.to(const TermAndConditionView());
                       },
@@ -289,7 +298,7 @@ class _MenuScreenViewState extends State<MenuScreenView> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => feedback()));
+                                builder: (context) => const feedback()));
                       },
                     ),
                     kbox5(),
@@ -399,13 +408,14 @@ class _MenuScreenViewState extends State<MenuScreenView> {
       ),
     );
   }
+
   kroitem(icon, text) {
     return GestureDetector(
       onTap: () {
         showModalBottomSheet(
           context: context,
           builder: (BuildContext context) {
-            return CustomBottomSheet();
+            return const CustomBottomSheet();
           },
         );
       },
@@ -426,8 +436,8 @@ class _MenuScreenViewState extends State<MenuScreenView> {
   kroitem2(icon, text) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => orderhistory()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const orderhistory()));
       },
       child: Column(
         children: [
@@ -450,7 +460,7 @@ class _MenuScreenViewState extends State<MenuScreenView> {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => allnoti()));
+            context, MaterialPageRoute(builder: (context) => const allnoti()));
       },
       child: Column(
         children: [
@@ -496,7 +506,7 @@ class _MenuScreenViewState extends State<MenuScreenView> {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => needhelp()));
+            context, MaterialPageRoute(builder: (context) => const needhelp()));
       },
       child: Column(
         children: [
@@ -519,7 +529,7 @@ class _MenuScreenViewState extends State<MenuScreenView> {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => holiday()));
+            context, MaterialPageRoute(builder: (context) => const holiday()));
       },
       child: Card(
         elevation: 5,
@@ -558,6 +568,8 @@ class _MenuScreenViewState extends State<MenuScreenView> {
 }
 
 class CustomBottomSheet extends StatefulWidget {
+  const CustomBottomSheet({super.key});
+
   @override
   State<CustomBottomSheet> createState() => _CustomBottomSheetState();
 }
@@ -586,7 +598,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
         child: Center(
           child: Text(
             '₹ $value',
-            style: TextStyle(color: Color(0xFF0091BE)),
+            style: const TextStyle(color: Color(0xFF0091BE)),
           ),
         ),
       ),
@@ -600,14 +612,14 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
         children: [
           AppBar(
             backgroundColor: Colors.white,
-            title: Text(
+            title: const Text(
               'Sufficient wallet balance',
               style: TextStyle(
                   color: Colors.black, fontSize: 15, fontFamily: 'Mulish'),
             ),
             actions: [
               IconButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.close,
                   color: Colors.black,
                 ),
@@ -619,14 +631,14 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
             elevation: 0,
           ),
           ListTile(
-            leading: CircleAvatar(
+            leading: const CircleAvatar(
               backgroundImage: AssetImage('assets/circular_image.png'),
               radius: 24,
             ),
             title: RichText(
               text: TextSpan(
                 style: DefaultTextStyle.of(context).style,
-                children: <TextSpan>[
+                children: const <TextSpan>[
                   TextSpan(
                     text: 'Your wallet balance is ₹',
                     style: TextStyle(
@@ -644,7 +656,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                 ],
               ),
             ),
-            subtitle: Text(
+            subtitle: const Text(
               'You can add up to ₹4,999',
               style: TextStyle(
                 color: Colors.grey,
@@ -654,8 +666,8 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
           Align(
               alignment: Alignment.centerLeft,
               child: Container(
-                  margin: EdgeInsets.only(left: 20),
-                  child: Text(
+                  margin: const EdgeInsets.only(left: 20),
+                  child: const Text(
                     'Please add an amount',
                     style: TextStyle(
                         color: Colors.black,
@@ -666,28 +678,31 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                margin: EdgeInsets.only(left: 10, right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
                 child: TextField(
                   controller: _controller,
                   decoration: InputDecoration(
                     labelText: 'Amount',
-                    labelStyle: TextStyle(color: Colors.black),
+                    labelStyle: const TextStyle(color: Colors.black),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
                       // Set border radius to 10
-                      borderSide: BorderSide(color: Colors.black, width: 2.0),
+                      borderSide:
+                          const BorderSide(color: Colors.black, width: 2.0),
                     ),
                     prefixText: '₹ ',
                     // Set the text color to black
-                    hintStyle: TextStyle(color: Colors.black),
+                    hintStyle: const TextStyle(color: Colors.black),
                     // Set the input text color to black
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black, width: 2.0),
+                      borderSide:
+                          const BorderSide(color: Colors.black, width: 2.0),
                       borderRadius: BorderRadius.circular(
                           10.0), // Set border radius to 10
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black, width: 2.0),
+                      borderSide:
+                          const BorderSide(color: Colors.black, width: 2.0),
                       borderRadius: BorderRadius.circular(
                           10.0), // Set border radius to 10
                     ),
@@ -695,11 +710,11 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                   onChanged: (value) {
                     selectedValue = value;
                   },
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.green), // Set the input text color to green
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Container(
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -724,40 +739,40 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
               ),
             ],
           ),
-          Container(
+          SizedBox(
               height: 120, // Adjust the height as needed
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: List.generate(
                   4,
-                  (index) => CustomContainer(),
+                  (index) => const CustomContainer(),
                 ),
               )),
           Align(
               alignment: Alignment.centerLeft,
               child: Container(
-                margin: EdgeInsets.only(left: 20),
-                child: Text(
+                margin: const EdgeInsets.only(left: 20),
+                child: const Text(
                   'Choose payment method',
                   style: TextStyle(color: Colors.black, fontSize: 20),
                 ),
               )),
           Container(
-              margin: EdgeInsets.only(left: 10, right: 10),
+              margin: const EdgeInsets.only(left: 10, right: 10),
               child: Image.asset('assets/img_7.png')),
           Container(
-            margin: EdgeInsets.only(top: 10),
+            margin: const EdgeInsets.only(top: 10),
             child: ElevatedButton(
               onPressed: () {
                 // Navigator.of(context).pop();
               },
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(300, 48),
-                primary: Color(0xFF86C649),
+                minimumSize: const Size(300, 48),
+                backgroundColor: const Color(0xFF86C649),
                 // Set background color to #0091BE
                 // Increase button width
               ),
-              child: Text('Continue'),
+              child: const Text('Continue'),
             ),
           ),
         ],
@@ -767,13 +782,15 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
 }
 
 class CustomContainer extends StatelessWidget {
+  const CustomContainer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(8.0),
+      margin: const EdgeInsets.all(8.0),
       width: 350, // Adjust the width as needed
       decoration: BoxDecoration(
-        border: Border(
+        border: const Border(
           left: BorderSide(
             color: Colors.black,
             width: 1.0,
@@ -804,7 +821,7 @@ class CustomContainer extends StatelessWidget {
             child: Container(
               width: 40,
               height: 40,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
                   image: AssetImage('assets/img_6.png'),
@@ -814,7 +831,7 @@ class CustomContainer extends StatelessWidget {
               ),
             ),
           ),
-          Container(
+          const SizedBox(
             width: 300,
             child: Text(
               'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
@@ -835,7 +852,7 @@ void _serveableaprt(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.grey,
-          title: Text(
+          title: const Text(
             'Serviceable Apartment List',
             style: TextStyle(color: Colors.black),
           ),
@@ -843,8 +860,8 @@ void _serveableaprt(BuildContext context) {
         body: Column(
           children: [
             Container(
-              margin: EdgeInsets.only(top: 10),
-              child: Center(
+              margin: const EdgeInsets.only(top: 10),
+              child: const Center(
                 child: Text(
                   'Delhi',
                   style: TextStyle(
@@ -857,7 +874,7 @@ void _serveableaprt(BuildContext context) {
             GestureDetector(
               onTap: () {},
               child: Container(
-                margin: EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
                 child: Card(
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
@@ -865,7 +882,7 @@ void _serveableaprt(BuildContext context) {
                   ),
                   elevation: 3,
                   child: ListTile(
-                    title: Center(
+                    title: const Center(
                       child: Text(
                         'Appartment1',
                         style: TextStyle(color: Colors.black, fontSize: 14),
@@ -873,7 +890,7 @@ void _serveableaprt(BuildContext context) {
                     ),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: [],
+                      children: const [],
                     ),
                   ),
                 ),
@@ -882,10 +899,10 @@ void _serveableaprt(BuildContext context) {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => feedback()));
+                    MaterialPageRoute(builder: (context) => const feedback()));
               },
               child: Container(
-                margin: EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
                 child: Card(
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
@@ -893,7 +910,7 @@ void _serveableaprt(BuildContext context) {
                   ),
                   elevation: 3,
                   child: ListTile(
-                    title: Center(
+                    title: const Center(
                       child: Text(
                         'Suggest an Appartment',
                         style: TextStyle(color: Colors.black, fontSize: 14),
@@ -901,7 +918,7 @@ void _serveableaprt(BuildContext context) {
                     ),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: [],
+                      children: const [],
                     ),
                   ),
                 ),

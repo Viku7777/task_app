@@ -6,7 +6,8 @@ class ProductCard extends StatelessWidget {
   final String price;
   final String size;
 
-  ProductCard({
+  const ProductCard({
+    super.key,
     required this.imageUrl,
     required this.name,
     required this.price,
@@ -17,7 +18,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(40), // Circular borders
-      child: Container(
+      child: SizedBox(
         width: 150, // Adjust the width as needed
         child: Card(
           elevation: 3,
@@ -32,7 +33,7 @@ class ProductCard extends StatelessWidget {
                       width: 200,
                       height: 120, // Adjust the image height as needed
                     ),
-                    Container(
+                    SizedBox(
                       height: 25, // Adjust the height as needed
                       width: double.infinity,
                       child: Container(
@@ -154,11 +155,13 @@ class ProductCard extends StatelessWidget {
 }
 
 class CustomContainer extends StatelessWidget {
+  const CustomContainer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-      margin: EdgeInsets.only(top: 10),
+      margin: const EdgeInsets.only(top: 10),
       height: 232,
       width: double.infinity,
       child: Column(
@@ -167,15 +170,15 @@ class CustomContainer extends StatelessWidget {
             children: [
               Flexible(
                 child: Container(
-                  padding: EdgeInsets.all(8.0),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.all(8.0),
+                  decoration: const BoxDecoration(
                     color: Colors.orange,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(8.0),
                       bottomRight: Radius.circular(8.0),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     "50% OFF",
                     style: TextStyle(
                       color: Colors.black,
@@ -195,10 +198,10 @@ class CustomContainer extends StatelessWidget {
                     // Replace the color with an Image widget or any other widget
                   ),
                   const SizedBox(width: 10),
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: const [
                       Text(
                         "Product Name",
                         style: TextStyle(
@@ -237,7 +240,7 @@ class CustomContainer extends StatelessWidget {
               child: Column(
                 children: [
                   Row(
-                    children: [
+                    children: const [
                       Text(
                         "My Plan",
                         style: TextStyle(color: Colors.black),
@@ -257,6 +260,9 @@ class CustomContainer extends StatelessWidget {
                         margin: const EdgeInsets.only(top: 10),
                         width: 110,
                         height: 80,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.purple),
+                        ),
                         child: const Center(
                           child: Text(
                             'All',
@@ -265,9 +271,6 @@ class CustomContainer extends StatelessWidget {
                               fontSize: 40,
                             ),
                           ),
-                        ),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.purple),
                         ),
                       ),
                       const Text(
@@ -278,6 +281,7 @@ class CustomContainer extends StatelessWidget {
                         margin: const EdgeInsets.only(top: 10),
                         width: 110,
                         height: 80,
+                        color: Colors.grey[200],
                         child: const Center(
                           child: Text(
                             '01',
@@ -287,7 +291,6 @@ class CustomContainer extends StatelessWidget {
                             ),
                           ),
                         ),
-                        color: Colors.grey[200],
                       ),
                       Container(
                         margin: const EdgeInsets.only(top: 10, left: 10),
@@ -359,7 +362,7 @@ class CustomContainer extends StatelessWidget {
                                   ),
                                 ),
                                 const SizedBox(width: 10),
-                                Text(
+                                const Text(
                                   '1',
                                   style: TextStyle(color: Colors.black),
                                 ),
