@@ -2,25 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:mr_ambarisha_frontend_new/model/create_user_model.dart';
+import 'package:mr_ambarisha_frontend_new/model/login_user_model.dart';
 import 'package:mr_ambarisha_frontend_new/model/register_otp_model.dart';
 import 'package:mr_ambarisha_frontend_new/repository/api_service.dart';
 import 'package:mr_ambarisha_frontend_new/utils/constants.dart';
-import 'package:mr_ambarisha_frontend_new/views/Auth/otp_verification.dart';
-import 'package:mr_ambarisha_frontend_new/views/Auth/signUp_view.dart';
+import 'package:mr_ambarisha_frontend_new/views/Auth/login_otp_verfication.dart';
+import 'package:mr_ambarisha_frontend_new/views/Auth/register_otp_verification.dart';
+import 'package:mr_ambarisha_frontend_new/views/Auth/auth_view.dart';
 import 'package:mr_ambarisha_frontend_new/views/choose_city.dart';
 
 class BasketController extends GetxController {
   TextEditingController signupTextController = TextEditingController();
   TextEditingController loginTextController = TextEditingController();
   TextEditingController pinController = TextEditingController();
+  TextEditingController loginPinController = TextEditingController();
   final GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
   final box = GetStorage();
 
   bool loading = false;
 
   CreateUserModel? createUserModel;
   RegisterOtpModel? registerOtpModel;
+  LoginUserModel? loginUserModel;
 
+  // Register user
   fetchCreateUser({required String mobile}) async {
     try {
       CreateUserModel? result = await ApiService.createUser(mobile: mobile);
@@ -39,7 +45,7 @@ class BasketController extends GetxController {
     if (signupFormKey.currentState?.validate() ?? false) {
       await fetchCreateUser(mobile: signupTextController.text.trim());
       if (createUserModel?.message == "OTP sent successfully") {
-        Get.to(() => const OtpVerifictionView());
+        Get.to(() => const RegisterOtpVerifiation());
       } else {
         Constants.showCustomSnackbar(
             "Alert", "User with this mobile number already exists", Colors.red);
@@ -51,6 +57,7 @@ class BasketController extends GetxController {
     update();
   }
 
+  // Register user otp
   fetchRegisterOtp({required String mobile, required String otp}) async {
     try {
       RegisterOtpModel? result =
@@ -84,6 +91,37 @@ class BasketController extends GetxController {
     update();
   }
 
+  // Login user
+  fetchLoginUser({required String mobile}) async {
+    try {
+      LoginUserModel? result = await ApiService.loginUser(mobile: mobile);
+      if (result != null) {
+        loginUserModel = result;
+        update();
+      }
+    } catch (e) {
+      print("Error fetching users: $e");
+    }
+  }
+
+  loginButton() async {
+    loading = true;
+    update();
+    if (loginFormKey.currentState?.validate() ?? false) {
+      await fetchLoginUser(mobile: loginTextController.text.trim());
+      if (loginUserModel?.message == "OTP sent successfully") {
+        Get.to(() => const LoginOtpVerification());
+      } else {
+        Constants.showCustomSnackbar("Alert", "User not found", Colors.red);
+      }
+    } else {
+      print('Form is invalid');
+    }
+    loading = false;
+    update();
+  }
+
+  // Logout user
   void logOut() async {
     await Get.dialog(
       AlertDialog(
@@ -107,7 +145,7 @@ class BasketController extends GetxController {
               loading = true;
               update();
               await box.remove('token');
-              Get.offAll(const SignUpView());
+              Get.offAll(const AuthView());
               loading = false;
               update();
             },

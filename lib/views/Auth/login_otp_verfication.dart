@@ -6,21 +6,21 @@ import 'package:mr_ambarisha_frontend_new/utils/constants.dart';
 import 'package:mr_ambarisha_frontend_new/view_model/basket_controller.dart';
 import 'package:pinput/pinput.dart';
 
-class OtpVerifictionView extends StatefulWidget {
-  const OtpVerifictionView({super.key});
+class LoginOtpVerification extends StatefulWidget {
+  const LoginOtpVerification({super.key});
 
   @override
-  State<OtpVerifictionView> createState() => _OtpVerifictionViewState();
+  State<LoginOtpVerification> createState() => _OtpVerifictionViewState();
 }
 
-class _OtpVerifictionViewState extends State<OtpVerifictionView> {
+class _OtpVerifictionViewState extends State<LoginOtpVerification> {
   BasketController controller = Get.put(BasketController());
   final focusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
-    controller.pinController.dispose();
+    controller.loginPinController.dispose();
     focusNode.dispose();
     super.dispose();
   }
@@ -118,7 +118,7 @@ class _OtpVerifictionViewState extends State<OtpVerifictionView> {
                           child: Pinput(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
-                            controller: controller.pinController,
+                            controller: controller.loginPinController,
                             focusNode: focusNode,
                             androidSmsAutofillMethod:
                                 AndroidSmsAutofillMethod.smsUserConsentApi,
@@ -129,7 +129,7 @@ class _OtpVerifictionViewState extends State<OtpVerifictionView> {
                             // },
                             // onClipboardFound: (value) {
                             //   debugPrint('onClipboardFound: $value');
-                            //   pinController.setText(value);
+                            //   loginPinController.setText(value);
                             // },
                             hapticFeedbackType: HapticFeedbackType.lightImpact,
                             onCompleted: (pin) {
@@ -205,7 +205,7 @@ class _OtpVerifictionViewState extends State<OtpVerifictionView> {
                       ? Constants.showCircularProgress()
                       : InkWell(
                           onTap: () {
-                            controller.registerOtpButton();
+                            ///////
                           },
                           child: Container(
                             width: 270.w,

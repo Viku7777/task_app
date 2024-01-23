@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mr_ambarisha_frontend_new/utils/constant_box.dart';
-import 'package:mr_ambarisha_frontend_new/views/Auth/signUp_view.dart';
+import 'package:mr_ambarisha_frontend_new/views/Auth/auth_view.dart';
 
 class Pnonboarding2View extends StatelessWidget {
   const Pnonboarding2View({super.key});
@@ -16,13 +16,16 @@ class Pnonboarding2View extends StatelessWidget {
         children: [
           SizedBox(
               width: 100, height: 100, child: Image.asset("assets/mobi.png")),
-          InkWell(onTap: () {
-            Get.to(SignUpView());
-          },
+          InkWell(
+            onTap: () {
+              Get.to(const AuthView());
+            },
             child: const Text(
               "shop now ->",
               style: TextStyle(
-                  color: Colors.black, fontSize: 20, fontWeight: FontWeight.w600),
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600),
             ),
           ),
           SizedBox(
@@ -72,29 +75,39 @@ class Pnonboarding2View extends StatelessWidget {
         Positioned(
             top: 350,
             right: -20,
-            child:
-                SizedBox(width: 200,
-                  height: 150, child: Image.asset("assets/img8.png",fit: BoxFit.cover,))),
+            child: SizedBox(
+                width: 200,
+                height: 150,
+                child: Image.asset(
+                  "assets/img8.png",
+                  fit: BoxFit.cover,
+                ))),
         Positioned(
             top: 380,
             left: 0,
-            child:
-                SizedBox(width: 140,
-                  height: 150, child: Image.asset("assets/img9.png",fit: BoxFit.cover,))),
+            child: SizedBox(
+                width: 140,
+                height: 150,
+                child: Image.asset(
+                  "assets/img9.png",
+                  fit: BoxFit.cover,
+                ))),
         Positioned(
             bottom: 150,
             right: 100,
             child:
                 SizedBox(height: 130, child: Image.asset("assets/img10.png"))),
-         Positioned(
+        Positioned(
           bottom: 80,
           left: 40,
           child: Column(
             children: [
               const Text(
                 "vegetables,Milk & More",
-                style: TextStyle(fontWeight: FontWeight.w800,
-                  fontSize: 25, color: Colors.black),
+                style: TextStyle(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 25,
+                    color: Colors.black),
               ),
               kbox20(),
               const Text(
