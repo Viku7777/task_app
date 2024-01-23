@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:mr_ambarisha_frontend_new/model/category_model.dart';
 import 'package:mr_ambarisha_frontend_new/model/create_user_model.dart';
 import 'package:mr_ambarisha_frontend_new/model/login_otp_model.dart';
 import 'package:mr_ambarisha_frontend_new/model/login_user_model.dart';
@@ -27,6 +28,13 @@ class BasketController extends GetxController {
   RegisterOtpModel? registerOtpModel;
   LoginUserModel? loginUserModel;
   LoginOtpModel? loginOtpModel;
+  CategoryModel? categoryModel;
+
+  @override
+  void onInit() {
+    super.onInit();
+    fetchGetCategory();
+  }
 
   // Register user
   fetchCreateUser({required String mobile}) async {
@@ -48,6 +56,9 @@ class BasketController extends GetxController {
       await fetchCreateUser(mobile: signupTextController.text.trim());
       if (createUserModel?.message == "OTP sent successfully") {
         Get.to(() => const RegisterOtpVerifiation());
+        //this snackbar wants to be removed after api fixed.
+        Constants.showCustomSnackbar("Suggestion",
+            "Your Otp is: ${createUserModel?.user?.otp}", Colors.black);
       } else {
         Constants.showCustomSnackbar(
             "Alert", "User with this mobile number already exists", Colors.red);
@@ -113,6 +124,9 @@ class BasketController extends GetxController {
       await fetchLoginUser(mobile: loginTextController.text.trim());
       if (loginUserModel?.message == "OTP generated and sent to the user") {
         Get.to(() => const LoginOtpVerification());
+        //this snackbar wants to be removed after api fixed.
+        Constants.showCustomSnackbar("Suggestion",
+            "Your Otp is: ${loginUserModel?.user?.otp}", Colors.black);
       } else {
         Constants.showCustomSnackbar("Alert", "User not found", Colors.red);
       }
@@ -189,5 +203,17 @@ class BasketController extends GetxController {
         ],
       ),
     );
+  }
+
+  fetchGetCategory() async {
+    try {
+      CategoryModel? result = await ApiService.getCategory();
+      if (result != null) {
+        categoryModel = result;
+        update();
+      }
+    } catch (e) {
+      print("Error fetching users: $e");
+    }
   }
 }
