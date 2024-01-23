@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:mr_ambarisha_frontend_new/model/create_user_model.dart';
+import 'package:mr_ambarisha_frontend_new/model/login_otp_model.dart';
 import 'package:mr_ambarisha_frontend_new/model/login_user_model.dart';
 import 'package:mr_ambarisha_frontend_new/model/register_otp_model.dart';
 import 'package:mr_ambarisha_frontend_new/repository/api_service.dart';
@@ -25,6 +26,7 @@ class BasketController extends GetxController {
   CreateUserModel? createUserModel;
   RegisterOtpModel? registerOtpModel;
   LoginUserModel? loginUserModel;
+  LoginOtpModel? loginOtpModel;
 
   // Register user
   fetchCreateUser({required String mobile}) async {
@@ -79,7 +81,7 @@ class BasketController extends GetxController {
           mobile: signupTextController.text.trim(),
           otp: pinController.text.trim());
       if (registerOtpModel?.message == "OTP verification successful.") {
-        box.write('token', registerOtpModel?.token);
+        box.write('register_token', registerOtpModel?.token);
         Get.offAll(() => const ChooseCityView());
       } else {
         Constants.showCustomSnackbar("Alert", "Invalid OTP", Colors.red);
@@ -109,10 +111,43 @@ class BasketController extends GetxController {
     update();
     if (loginFormKey.currentState?.validate() ?? false) {
       await fetchLoginUser(mobile: loginTextController.text.trim());
-      if (loginUserModel?.message == "OTP sent successfully") {
+      if (loginUserModel?.message == "OTP generated and sent to the user") {
         Get.to(() => const LoginOtpVerification());
       } else {
         Constants.showCustomSnackbar("Alert", "User not found", Colors.red);
+      }
+    } else {
+      print('Form is invalid');
+    }
+    loading = false;
+    update();
+  }
+
+  fetchLoginOtp({required String mobile, required String otp}) async {
+    try {
+      LoginOtpModel? result =
+          await ApiService.loginOtp(mobile: mobile, otp: otp);
+      if (result != null) {
+        loginOtpModel = result;
+        update();
+      }
+    } catch (e) {
+      print("Error fetching users: $e");
+    }
+  }
+
+  loginOtpButton() async {
+    loading = true;
+    update();
+    if (loginFormKey.currentState?.validate() ?? false) {
+      await fetchLoginOtp(
+          mobile: loginTextController.text.trim(),
+          otp: loginPinController.text.trim());
+      if (loginOtpModel?.message == "OTP verification successful.") {
+        box.write('login_token', loginOtpModel?.token);
+        Get.offAll(() => const ChooseCityView());
+      } else {
+        Constants.showCustomSnackbar("Alert", "Invalid OTP", Colors.red);
       }
     } else {
       print('Form is invalid');
@@ -144,7 +179,8 @@ class BasketController extends GetxController {
             onPressed: () async {
               loading = true;
               update();
-              await box.remove('token');
+              await box.remove('register_token');
+              await box.remove('login_token');
               Get.offAll(const AuthView());
               loading = false;
               update();

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:mr_ambarisha_frontend_new/utils/constant_box.dart';
+import 'package:mr_ambarisha_frontend_new/utils/constants.dart';
 import 'package:mr_ambarisha_frontend_new/view_model/basket_controller.dart';
 
 class LoginForm extends GetView<BasketController> {
@@ -30,6 +31,7 @@ class LoginForm extends GetView<BasketController> {
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(color: Colors.grey)),
               child: TextFormField(
+                  controller: controller.loginTextController,
                   style: const TextStyle(color: Colors.black),
                   textAlign: TextAlign.center,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -80,26 +82,31 @@ class LoginForm extends GetView<BasketController> {
             ),
           ),
           kbox10(),
-          InkWell(
-            onTap: () {
-              controller.loginButton();
-            },
-            child: Container(
-              width: 200.w,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: const Color(0xff2ED297)),
-              child: const Center(
-                child: Padding(
-                  padding: EdgeInsets.all(15.0),
-                  child: Text(
-                    "Next",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w700),
+          GetBuilder<BasketController>(
+            builder: (controller) => controller.loading
+                ? Constants.showCircularProgress()
+                : InkWell(
+                    onTap: () {
+                      controller.loginButton();
+                    },
+                    child: Container(
+                      width: 200.w,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: const Color(0xff2ED297)),
+                      child: const Center(
+                        child: Padding(
+                          padding: EdgeInsets.all(15.0),
+                          child: Text(
+                            "Next",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ),
           ),
         ],
       ),

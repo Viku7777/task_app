@@ -87,8 +87,8 @@ class _OtpVerifictionViewState extends State<LoginOtpVerification> {
                 kbox5(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       "sent to ",
                       style: TextStyle(
                           color: Colors.grey,
@@ -96,8 +96,8 @@ class _OtpVerifictionViewState extends State<LoginOtpVerification> {
                           fontWeight: FontWeight.w400),
                     ),
                     Text(
-                      " +91 8123846252",
-                      style: TextStyle(
+                      controller.loginTextController.text,
+                      style: const TextStyle(
                           color: Colors.blue,
                           fontSize: 14,
                           fontWeight: FontWeight.w400),
@@ -205,7 +205,7 @@ class _OtpVerifictionViewState extends State<LoginOtpVerification> {
                       ? Constants.showCircularProgress()
                       : InkWell(
                           onTap: () {
-                            ///////
+                            controller.loginOtpButton();
                           },
                           child: Container(
                             width: 270.w,
