@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:mr_ambarisha_frontend_new/views/Basket/Basket.dart';
-import 'package:mr_ambarisha_frontend_new/views/bottomNavigation/homePage.dart';
 
 import 'bottom_navigation_view.dart';
 
@@ -78,15 +77,17 @@ class _CategoriesState extends State<Categories> {
     'https://picsum.photos/200/300',
     // Add your image URLs or file paths here
   ];
-  int _quantity = 1;
+  final int _quantity = 1;
   bool _isGridView = false;
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => BottomNavigationView()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const BottomNavigationView()));
         return false;
       },
       child: Scaffold(
@@ -106,7 +107,7 @@ class _CategoriesState extends State<Categories> {
                 ),
                 child: Center(
                   child: IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_back_ios,
                       color: Colors.black,
                     ),
@@ -116,8 +117,8 @@ class _CategoriesState extends State<Categories> {
                   ),
                 ),
               ),
-              SizedBox(width: 10),
-              Text(
+              const SizedBox(width: 10),
+              const Text(
                 'Grocery',
                 style: TextStyle(
                   fontSize: 18,
@@ -136,7 +137,7 @@ class _CategoriesState extends State<Categories> {
                     ),
                     child: Center(
                       child: IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.search,
                           color: Colors.black,
                         ),
@@ -146,7 +147,7 @@ class _CategoriesState extends State<Categories> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                 ],
               ),
             ],
@@ -170,8 +171,8 @@ class _CategoriesState extends State<Categories> {
                       });
                     },
                     child: Container(
-                      margin: EdgeInsets.only(top: 10),
-                      padding: EdgeInsets.all(10),
+                      margin: const EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.all(10),
                       color: isSelected ? Colors.lightGreen[200] : Colors.white,
                       child: Column(
                         children: [
@@ -179,7 +180,7 @@ class _CategoriesState extends State<Categories> {
                             child: Image.network(item['image'],
                                 width: 80, height: 80, fit: BoxFit.cover),
                           ),
-                          SizedBox(height: 5),
+                          const SizedBox(height: 5),
                           Text(
                             item['text'],
                             style: TextStyle(
@@ -200,7 +201,7 @@ class _CategoriesState extends State<Categories> {
                 children: [
                   Row(
                     children: [
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 16.0),
                         child: Text(
                           'Vegetables',
@@ -247,7 +248,8 @@ class _CategoriesState extends State<Categories> {
                           builder: (BuildContext context) {
                             return Container(
                               width: MediaQuery.of(context).size.width,
-                              margin: EdgeInsets.symmetric(horizontal: 5.0),
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 5.0),
                               decoration: BoxDecoration(
                                 color: Colors.grey,
                                 borderRadius: BorderRadius.circular(
@@ -291,19 +293,20 @@ class _CategoriesState extends State<Categories> {
                       child: Row(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(left: 10),
-                            child: Text(
+                            margin: const EdgeInsets.only(left: 10),
+                            child: const Text(
                               '1 Item | ₹ 90',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
-                          Spacer(),
+                          const Spacer(),
                           TextButton(
                               onPressed: () {},
-                              child: Text('view Cart',
+                              child: const Text('view Cart',
                                   style: TextStyle(color: Colors.white))),
                           IconButton(
-                              onPressed: () {}, icon: Icon(Icons.shopping_bag))
+                              onPressed: () {},
+                              icon: const Icon(Icons.shopping_bag))
                         ],
                       ),
                     ),
@@ -326,7 +329,7 @@ class _CategoriesState extends State<Categories> {
 class ListViewWidget extends StatefulWidget {
   final List<Map<String, dynamic>> products;
 
-  ListViewWidget(this.products);
+  const ListViewWidget(this.products, {super.key});
 
   @override
   State<ListViewWidget> createState() => _ListViewWidgetState();
@@ -351,7 +354,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
       onTap: () {
         showModalBottomSheet(
           context: context,
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
           builder: (BuildContext context) {
             return ProductDetailsSheet(
@@ -364,7 +367,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
         itemBuilder: (context, index) {
           final product = widget.products[index];
           return Container(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
                 ClipOval(
@@ -375,32 +378,34 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                SizedBox(width: 16.0),
+                const SizedBox(width: 16.0),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         product['name'],
-                        style: TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.black),
                       ),
                       Text(
                         'Size: ${product['size']}',
-                        style: TextStyle(color: Colors.black, fontSize: 12),
+                        style:
+                            const TextStyle(color: Colors.black, fontSize: 12),
                       ),
                       Text(
                         'price: ${product['price']}',
-                        style: TextStyle(color: Colors.black, fontSize: 12),
+                        style:
+                            const TextStyle(color: Colors.black, fontSize: 12),
                       ),
                     ],
                   ),
                 ),
                 Column(
                   children: [
-                    Container(
+                    SizedBox(
                       width: 40,
                       child: IconButton(
-                        icon: Icon(Icons.calendar_today),
+                        icon: const Icon(Icons.calendar_today),
                         onPressed: () {
                           // Handle calendar button press here
                         },
@@ -408,24 +413,24 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                     ),
                     Row(
                       children: [
-                        Container(
+                        SizedBox(
                           width: 40,
                           child: IconButton(
-                            icon: Icon(Icons.remove),
+                            icon: const Icon(Icons.remove),
                             onPressed: () {
                               // Handle quantity decrease here
                             },
                           ),
                         ),
-                        Text(
+                        const Text(
                           '1',
                           style: TextStyle(color: Colors.black),
                         ),
                         // Quantity
-                        Container(
+                        SizedBox(
                           width: 40,
                           child: IconButton(
-                            icon: Icon(Icons.add),
+                            icon: const Icon(Icons.add),
                             onPressed: () {
                               // Handle quantity increase here
                             },
@@ -447,7 +452,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
 class GridViewWidget extends StatelessWidget {
   final List<Map<String, dynamic>> products;
 
-  GridViewWidget(this.products);
+  GridViewWidget(this.products, {super.key});
 
   final List<Product> item = [
     Product(
@@ -464,7 +469,7 @@ class GridViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: 0.650, // Adjust the aspect ratio for taller items
       ),
@@ -475,7 +480,7 @@ class GridViewWidget extends StatelessWidget {
           onTap: () {
             showModalBottomSheet(
               context: context,
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                   borderRadius:
                       BorderRadius.vertical(top: Radius.circular(20))),
               builder: (BuildContext context) {
@@ -493,7 +498,7 @@ class GridViewWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     IconButton(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.favorite_border,
                         color: Colors.red,
                       ),
@@ -502,14 +507,14 @@ class GridViewWidget extends StatelessWidget {
                       },
                     ),
                     Container(
-                      padding: EdgeInsets.only(left: 30, bottom: 12),
+                      padding: const EdgeInsets.only(left: 30, bottom: 12),
                       child: Container(
                         height: 30,
                         width: 50,
                         color: Colors.red[100],
                         // Set the background color to light red
-                        child: Center(
-                          child: const Text(
+                        child: const Center(
+                          child: Text(
                             "16%",
                             style: TextStyle(color: Colors.black),
                           ),
@@ -536,7 +541,7 @@ class GridViewWidget extends StatelessWidget {
                   child: Center(
                     child: Text(
                       product['size'],
-                      style: TextStyle(color: Colors.black, fontSize: 10),
+                      style: const TextStyle(color: Colors.black, fontSize: 10),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
@@ -546,7 +551,7 @@ class GridViewWidget extends StatelessWidget {
                   child: Center(
                     child: Text(
                       product['name'],
-                      style: TextStyle(color: Colors.black, fontSize: 10),
+                      style: const TextStyle(color: Colors.black, fontSize: 10),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
@@ -556,17 +561,17 @@ class GridViewWidget extends StatelessWidget {
                   child: Center(
                     child: Text(
                       product['price'],
-                      style: TextStyle(color: Colors.black, fontSize: 10),
+                      style: const TextStyle(color: Colors.black, fontSize: 10),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ),
                 Row(
                   children: [
-                    Container(
+                    SizedBox(
                       width: 40,
                       child: IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.calendar_today,
                           color: Colors.blue,
                         ),
@@ -575,27 +580,27 @@ class GridViewWidget extends StatelessWidget {
                         },
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Row(
                       children: [
-                        Container(
+                        SizedBox(
                           width: 40,
                           child: IconButton(
-                            icon: Icon(Icons.remove),
+                            icon: const Icon(Icons.remove),
                             onPressed: () {
                               // Handle quantity decrease here
                             },
                           ),
                         ),
-                        Text(
+                        const Text(
                           '1',
                           style: TextStyle(color: Colors.black),
                         ),
                         // Quantity
-                        Container(
+                        SizedBox(
                           width: 40,
                           child: IconButton(
-                            icon: Icon(Icons.add),
+                            icon: const Icon(Icons.add),
                             onPressed: () {
                               // Handle quantity increase here
                             },
@@ -617,16 +622,16 @@ class GridViewWidget extends StatelessWidget {
 class ProductDetailsSheet extends StatelessWidget {
   final Product item;
 
-  ProductDetailsSheet(this.item);
+  const ProductDetailsSheet(this.item, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height:
           MediaQuery.of(context).size.height * 0.980, // Set the desired height
       child: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
@@ -635,93 +640,93 @@ class ProductDetailsSheet extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    icon: Icon(Icons.arrow_back),
+                    icon: const Icon(Icons.arrow_back),
                     onPressed: () {
                       Navigator.pop(context);
                     },
                   ),
                   IconButton(
-                    icon: Icon(Icons.favorite_border),
+                    icon: const Icon(Icons.favorite_border),
                     onPressed: () {
                       // Handle favorite button press
                     },
                   ),
                 ],
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Image.network(
                 item.image,
                 height: 200,
                 fit: BoxFit.cover,
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Text(
                 item.name,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.black),
               ),
-              SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.star,
                     color: Colors.yellow,
                   ),
-                  SizedBox(width: 4.0),
+                  const SizedBox(width: 4.0),
                   Text(
                     '${item.rating}',
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   ),
                 ],
               ),
-              SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
               Text(
                 '\$${item.price.toStringAsFixed(2)}',
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.black),
               ),
-              SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
               Text(
                 '${item.discount}% off',
-                style: TextStyle(color: Colors.green),
+                style: const TextStyle(color: Colors.green),
               ),
-              SizedBox(height: 16.0),
-              Text(
+              const SizedBox(height: 16.0),
+              const Text(
                 'Description:',
                 style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Colors.black),
               ),
-              SizedBox(height: 8.0),
-              Text(
+              const SizedBox(height: 8.0),
+              const Text(
                 "Apple Mountain works as a seller for many apple growers of apple. apple are easy to spot in your produce aisle. They are just like regular apple, but they will usually have a few more scars on ",
                 style: TextStyle(color: Colors.black),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Row(
                 children: [
                   IconButton(
-                    icon: Icon(Icons.remove),
+                    icon: const Icon(Icons.remove),
                     onPressed: () {
                       // Handle quantity decrease
                     },
                   ),
-                  Text(
+                  const Text(
                     '1',
                     style: TextStyle(color: Colors.black),
                   ), // Quantity
                   IconButton(
-                    icon: Icon(Icons.add),
+                    icon: const Icon(Icons.add),
                     onPressed: () {
                       // Handle quantity increase
                     },
                   ),
-                  Spacer(),
+                  const Spacer(),
                   InkWell(
                     onTap: () {
                       Navigator.push(context,
@@ -734,7 +739,7 @@ class ProductDetailsSheet extends StatelessWidget {
                           shape: BoxShape.rectangle,
                           color: Colors.green,
                           borderRadius: BorderRadius.circular(25)),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           'Add to Cart',
                           style: TextStyle(

@@ -20,11 +20,8 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     Timer(const Duration(seconds: 2), () async {
-      String? token = box.read('register_token');
-      String? loginToken = box.read('login_token');
+      String? token = box.read('token');
       if (token?.isNotEmpty ?? false) {
-        Get.offAll(const ChooseCityView());
-      } else if (loginToken?.isNotEmpty ?? false) {
         Get.offAll(const ChooseCityView());
       } else {
         Get.to(IntroScreen());

@@ -81,7 +81,7 @@ class BasketController extends GetxController {
           mobile: signupTextController.text.trim(),
           otp: pinController.text.trim());
       if (registerOtpModel?.message == "OTP verification successful.") {
-        box.write('register_token', registerOtpModel?.token);
+        box.write('token', registerOtpModel?.token);
         Get.offAll(() => const ChooseCityView());
       } else {
         Constants.showCustomSnackbar("Alert", "Invalid OTP", Colors.red);
@@ -144,7 +144,7 @@ class BasketController extends GetxController {
           mobile: loginTextController.text.trim(),
           otp: loginPinController.text.trim());
       if (loginOtpModel?.message == "OTP verification successful.") {
-        box.write('login_token', loginOtpModel?.token);
+        box.write('token', loginOtpModel?.token);
         Get.offAll(() => const ChooseCityView());
       } else {
         Constants.showCustomSnackbar("Alert", "Invalid OTP", Colors.red);
@@ -179,8 +179,7 @@ class BasketController extends GetxController {
             onPressed: () async {
               loading = true;
               update();
-              await box.remove('register_token');
-              await box.remove('login_token');
+              await box.remove('token');
               Get.offAll(const AuthView());
               loading = false;
               update();
